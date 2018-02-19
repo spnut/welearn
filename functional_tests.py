@@ -23,9 +23,8 @@ class NewVisitorTest(unittest.TestCase):
 
     check_button_tutor = self.browser.find_element_by_name('name_tutor')
     self.assertEqual(check_button_tutor.get_attribute('value'), 'Tutor')
-
-    check_button_tutor.click()
     time.sleep(3)
+    check_button_tutor.click()
     check_url_tutor = self.browser.current_url
     self.assertRegex(check_url_tutor, '/WelearnApp/tutor')
 
@@ -33,9 +32,9 @@ class NewVisitorTest(unittest.TestCase):
     inputbox = self.browser.find_element_by_id('id_new_post')
     self.assertEqual(inputbox.get_attribute('placeholder'),'Enter your post')
     inputbox.send_keys('Hi! I am Tutor')
-    #check_button_tutor = self.browser.find_element_by_name('name_post')
-    #check_button_tutor.click()
+    check_button_tutor = self.browser.find_element_by_name('name_post')
     time.sleep(3)
+    check_button_tutor.click()
     
     table = self.browser.find_element_by_id('id_post_table')
 
