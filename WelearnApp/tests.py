@@ -17,5 +17,14 @@ class HomePageTest(TestCase):
     expected_html = render_to_string('home.html')
     self.assertEqual(html, expected_html)
 
+  def test_tutor_page_returns_correct_html(self):
+  	response = self.client.get('/WelearnApp/tutor')
+
+  	html = response.content.decode('utf8')
+  	self.assertTrue(html.startswith('<html>'))
+  	self.assertIn('<title>Tutor</title>', html)
+  	self.assertTrue(html.strip().endswith('</html>'))
+
+  	self.assertTemplateUsed(response, 'tutor.html')
 
 
