@@ -32,11 +32,14 @@ class NewVisitorTest(unittest.TestCase):
     inputbox = self.browser.find_element_by_id('id_new_post')
     self.assertEqual(inputbox.get_attribute('placeholder'),'Enter your post')
     inputbox.send_keys('Hi! I am Tutor')
-    check_button_tutor = self.browser.find_element_by_name('name_post')
+    #check_button_tutor = self.browser.find_element_by_name('name_post')
+    inputbox.send_keys(Keys.ENTER)
     time.sleep(3)
-    check_button_tutor.click()
+    #check_button_tutor.click()
     
     table = self.browser.find_element_by_id('id_post_table')
+    rows = table.find_elements_by_tag_name('tr')
+    self.assertTrue(any(row.text == 'Hi! I am Tutor' for row in rows),"New Post did not appear in table")
 
     
     self.fail('Finish the test!')
