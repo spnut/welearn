@@ -28,7 +28,8 @@ class HomePageTest(TestCase):
   	self.assertTemplateUsed(response, 'tutor.html')
 
   def test_can_save_a_POST_request(self):
-  	response = self.client.post('/WelearnApp/tutor', data={'post_item':'A new post'})
-  	self.assertIn('A new post', response.content.decode())
-  	
+  	response = self.client.post('/WelearnApp/tutor', data={'post_item':'A new list item'})# >>post_item is variable in tutor.html
+  	self.assertIn('A new list item', response.content.decode())
+  	self.assertTemplateUsed(response, 'tutor.html')
+
 

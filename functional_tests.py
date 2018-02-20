@@ -29,7 +29,7 @@ class NewVisitorTest(unittest.TestCase):
     self.assertRegex(check_url_tutor, '/WelearnApp/tutor')
 
     # He create post.
-    inputbox = self.browser.find_element_by_id('id_new_post')
+    inputbox = self.browser.find_element_by_id('id_new_post')# id_new_post is variable in tutor.html
     self.assertEqual(inputbox.get_attribute('placeholder'),'Enter your post')
     inputbox.send_keys('Hi! I am Tutor')
     #check_button_tutor = self.browser.find_element_by_name('name_post')
@@ -37,10 +37,10 @@ class NewVisitorTest(unittest.TestCase):
     time.sleep(3)
     #check_button_tutor.click()
     
-    table = self.browser.find_element_by_id('id_post_table')
+    table = self.browser.find_element_by_id('id_post_table') # id_post_table is id table in tutor.html
     rows = table.find_elements_by_tag_name('tr')
-    self.assertTrue(any(row.text == 'Hi! I am Tutor' for row in rows),"New Post did not appear in table")
 
+    self.assertIn('1: Hi! I am tutor', [row.text for row in rows])
     
     self.fail('Finish the test!')
 
