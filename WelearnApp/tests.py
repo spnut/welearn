@@ -3,6 +3,7 @@ from django.urls import resolve
 from django.test import TestCase
 from django.http import HttpRequest
 from WelearnApp.views import home_page
+from WelearnApp.models import Item
 
 class HomePageTest(TestCase):
 
@@ -32,4 +33,21 @@ class HomePageTest(TestCase):
   	self.assertIn('A new list item', response.content.decode())
   	self.assertTemplateUsed(response, 'tutor.html')
 
+class ItemModelTest(TestCase):
+  def test_saving_and_retrieving_items(self):
+    frist_item = Item()
+    frist_item.text = 'The first (ever) list item'
+    frist_item.save()
+
+    second_item = Item()
+    second_item.text = 'Item the second'
+    second_item.save()
+
+    saved_item = Item.objects.all()
+    self.assertEqual(saved_item.count(),2)
+
+    first_saved_item = saved_item[0]
+    second_saved_item =saved_item[1]
+    self.assertEqual(first_saved_item.text, 'The first (ever) list item')
+    self.assertEqual(second_saved_item.text, 'Item the second')
 

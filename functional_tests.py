@@ -17,6 +17,8 @@ class NewVisitorTest(unittest.TestCase):
     time.sleep(10)
     self.browser.quit()
 
+  #def checheck_for_row_in_list_table
+
   def test_can_start_a_list_and_retrieve_it_later(self):
     self.browser.get('http://localhost:8000')
     self.assertIn('Welearn', self.browser.title)
@@ -40,7 +42,7 @@ class NewVisitorTest(unittest.TestCase):
     table = self.browser.find_element_by_id('id_post_table') # id_post_table is id table in tutor.html
     rows = table.find_elements_by_tag_name('tr')
 
-    self.assertIn('1: Hi! I am tutor', [row.text for row in rows])
+    self.assertIn('1: Hi! I am Tutor', [row.text for row in rows])
     
     self.fail('Finish the test!')
 
