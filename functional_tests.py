@@ -45,7 +45,7 @@ class NewVisitorTest(unittest.TestCase):
 
     check_button_problem = self.browser.find_element_by_name('name_board_post')
     self.assertEqual(check_button_problem.get_attribute('value'), 'Creat Post')
-    time.sleep(3)
+    time.sleep(10)
 
     # นัทเห็นกระทู้ทั้งหมดที่มีในบอร์ด
 
@@ -67,25 +67,25 @@ class NewVisitorTest(unittest.TestCase):
     inputbox = self.browser.find_element_by_id('id_new_post_tutor')
     # id_new_post_tutor is variable in tutorpost.html
     self.assertEqual(inputbox.get_attribute('placeholder'),'Enter your post')
-    inputbox.send_keys('Hi! I am Tutor')
+    inputbox.send_keys('I want someone to be my tutor in Math')
     #check_button_tutor = self.browser.find_element_by_name('name_post')
     inputbox.send_keys(Keys.ENTER)
     time.sleep(10)
     #check_button_tutor.click()
-    self.check_for_row_in_list_table('1: Hi! I am Tutor')
+    self.check_for_row_in_list_table('1: I want someone to be my tutor in Math')
 
     # He add another item. She enters 'Hi! I am Tutor Math'
     inputbox = self.browser.find_element_by_id('id_new_post_tutor')
     # id_new_post_tutor is variable in tutorpost.html
     self.assertEqual(inputbox.get_attribute('placeholder'),'Enter your post')
-    inputbox.send_keys('Hi! I am Tutor Math')
+    inputbox.send_keys('I will teach you all in Circuit, who is interested?')
     #check_button_tutor = self.browser.find_element_by_name('name_post')
     inputbox.send_keys(Keys.ENTER)
     time.sleep(10)
     #check_button_tutor.click()
     # The page updates again, and now shows both items on her list
-    self.check_for_row_in_list_table('1: Hi! I am Tutor')
-    self.check_for_row_in_list_table('Hi! I am Tutor Math')
+    self.check_for_row_in_list_table('1: I want someone to be my tutor in Math')
+    self.check_for_row_in_list_table('2: I will teach you all in Circuit, who is interested?')
     
 
     self.fail('Finish the test!')

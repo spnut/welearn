@@ -1,14 +1,26 @@
 <html>
 <title>Tutor Post</title>
 <body>
+         <center><h1>Tutor board</h1></center>
          <form method="POST">
+             <center>
              <input name="post_tutor_item" id="id_new_post_tutor" placeholder="Enter your post" />
+             <input type="submit" value="post"/>
+
              {% csrf_token %}
+             </center>
          </form>
-    <table id="id_post_tutor_table">
+         <center><table id="id_post_tutor_table" border="3">
+         <td>Tutor board</td>
          {% for item in items %}
-             <tr><td>{{ forloop.counter }}: {{ item.text }}</td></tr>
+             
+                 <tr><td>{{ forloop.counter }}: {{ item.text }}</td></tr>
+                 <tr><td>
+                 <input type="button" value="Delete" name="name_tutor_delete_post">
+                 <input type="button" value="Comment" name="name_tutor_comment_post">
+                 </td></tr>
+             
          {% endfor %}
-    </table>
+         </table></center>
 </body>
 </html>
