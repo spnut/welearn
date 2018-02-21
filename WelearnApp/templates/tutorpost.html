@@ -1,0 +1,13 @@
+<html>
+<title>Tutor Post</title>
+<body>
+         <form method="POST">
+             <input name="post_tutor_item" id="id_new_post_tutor" placeholder="Enter your post" />
+             {% csrf_token %}
+         </form>
+    <table id="id_post_tutor_table">
+         <tr><td>1: {{ A_new_tutor_post }}</td></tr>
+        
+    </table>
+</body>
+</html>
