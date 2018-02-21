@@ -1,5 +1,6 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from WelearnApp.models import Item
 
 def home_page(request):
     return render(request, 'home.html')
@@ -20,4 +21,15 @@ def test_home_post(request):
     return render(request, 'homepost.html')
 
 def test_tutor_post(request):
-    return render(request, 'tutorpost.html', {'A_new_tutor_post' : request.POST.get('post_tutor_item',''),})
+    # 'post_tutor_item' is name inputbox form tutorpost.html
+    if request.method == 'POST':
+        Item.objects.create(text=request.POST['post_tutor_item'])
+        return redirect('/WelearnApp/tutor/post')
+    items = Item.objects.all()
+    return render(request, 'tutorpost.html', {'items': items})
+    '''item = Item()
+    item.text = request.POST.get('post_tutor_item','')
+    item.save()
+
+    return render(request, 'tutorpost.html', {
+        'A_new_tutor_post' : item.text })'''

@@ -14,8 +14,13 @@ class NewVisitorTest(unittest.TestCase):
     self.browser = webdriver.Firefox()
 
   def tearDown(self):
-    time.sleep(3)
+    time.sleep(10)
     self.browser.quit()
+
+  def check_for_row_in_list_table(self, row_text):
+    table = self.browser.find_element_by_id('id_post_tutor_table') # id_post_tutor_table is id table in tutorpost.html
+    rows = table.find_elements_by_tag_name('tr')
+    self.assertIn(row_text, [row.text for row in rows])
 
   #def checheck_for_row_in_list_table
   # Nut has heard about web application 'Welearn'.
@@ -49,7 +54,7 @@ class NewVisitorTest(unittest.TestCase):
     check_button_tutor.click()
     check_url_tutor = self.browser.current_url
     self.assertRegex(check_url_tutor, '/WelearnApp/tutor')
-    time.sleep(3)
+    time.sleep(10)
 
     # นัทกดปุ่มตั้งกระทู้
     check_button_post_tutor = self.browser.find_element_by_name('name_tutor_post')
@@ -65,14 +70,24 @@ class NewVisitorTest(unittest.TestCase):
     inputbox.send_keys('Hi! I am Tutor')
     #check_button_tutor = self.browser.find_element_by_name('name_post')
     inputbox.send_keys(Keys.ENTER)
-    time.sleep(3)
+    time.sleep(10)
     #check_button_tutor.click()
-    
-    table = self.browser.find_element_by_id('id_post_tutor_table') # id_post_tutor_table is id table in tutorpost.html
-    rows = table.find_elements_by_tag_name('tr')
+    self.check_for_row_in_list_table('1: Hi! I am Tutor')
 
-    self.assertIn('1: Hi! I am Tutor', [row.text for row in rows])
+    # He add another item. She enters 'Hi! I am Tutor Math'
+    inputbox = self.browser.find_element_by_id('id_new_post_tutor')
+    # id_new_post_tutor is variable in tutorpost.html
+    self.assertEqual(inputbox.get_attribute('placeholder'),'Enter your post')
+    inputbox.send_keys('Hi! I am Tutor Math')
+    #check_button_tutor = self.browser.find_element_by_name('name_post')
+    inputbox.send_keys(Keys.ENTER)
+    time.sleep(10)
+    #check_button_tutor.click()
+    # The page updates again, and now shows both items on her list
+    self.check_for_row_in_list_table('1: Hi! I am Tutor')
+    self.check_for_row_in_list_table('Hi! I am Tutor Math')
     
+
     self.fail('Finish the test!')
 
 if __name__ == '__main__':

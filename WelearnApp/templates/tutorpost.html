@@ -6,8 +6,9 @@
              {% csrf_token %}
          </form>
     <table id="id_post_tutor_table">
-         <tr><td>1: {{ A_new_tutor_post }}</td></tr>
-        
+         {% for item in items %}
+             <tr><td>{{ forloop.counter }}: {{ item.text }}</td></tr>
+         {% endfor %}
     </table>
 </body>
 </html>
