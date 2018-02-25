@@ -74,3 +74,15 @@ class ItemModelTest(TestCase):
         a.delete()
         print("After delete post", saved_item)
 
+    def test_can_comment(self):
+        frist_item = Item()
+        frist_item.comment = 'The first (ever) list item'
+        frist_item.save()
+
+        second_item = Item()
+        second_item.comment = 'Item the second'
+        second_item.save()
+
+        saved_item = Item.objects.all()
+        print("MY comments", saved_item)
+

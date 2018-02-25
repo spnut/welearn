@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^WelearnApp/problem$', views.test_problem, name='problem'),
     url(r'^post$', views.test_home_post, name='homepost'),
     url(r'^WelearnApp/tutor/post$', views.test_tutor_post, name='tutorpost'),
+    url(r'^WelearnApp/tutor/post/comment$', views.test_comment, name='tutorcomment'),
 ]

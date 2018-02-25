@@ -27,6 +27,20 @@ def test_tutor_post(request):
         return redirect('/WelearnApp/tutor/post')
     items = Item.objects.all()
     return render(request, 'tutorpost.html', {'items': items})
+
+def test_comment(request):
+    if request.method == 'POST':
+        first_item = Item()
+        #a = first_item(id=id) 
+        Item.objects.create(text=request.POST['id_new_post_tutor'], comment=request.POST['name_tutor_comment_post'])
+        return redirect('/WelearnApp/tutor/post/comment')
+    items = Item.objects.all()
+    return render(request, 'comment.html', {'items': items})
+
+
+
+
+
     '''item = Item()
     item.text = request.POST.get('post_tutor_item','')
     item.save()

@@ -14,10 +14,14 @@
          <td>Tutor board</td>
          {% for item in items %}
              
-                 <tr><td>{{ forloop.counter }}: {{ item.text }}</td></tr>
-                 <tr><td>
+                 <tr><td>{{ item.id }}: {{ item.text }}</td></tr>
+                 <tr><td>             
                  <input type="button" value="Delete" name="name_tutor_delete_post">
-                 <input type="button" value="Comment" name="name_tutor_comment_post">
+             <!---form method="POST" action="/WelearnApp/tutor/post/comment"-->
+                 
+                 <input type="submit" value="Comment" name="name_tutor_comment_post" 
+                        onclick="window.location.href='/WelearnApp/tutor/post/comment'" >
+             
                  </td></tr>
              
          {% endfor %}
