@@ -31,8 +31,8 @@ class NewVisitorTest(unittest.TestCase):
     self.assertIn('Welearn', self.browser.title)
 
     # นัทเห็นปุ่ม “บอร์ดรวม”  “Tutor”  “Examination”  “Problem”  และปุ่มตั้งกระทู้
-    check_button_board = self.browser.find_element_by_name('name_board')
-    self.assertEqual(check_button_board.get_attribute('value'), 'board')
+    #check_button_board = self.browser.find_element_by_name('name_board')
+    #self.assertEqual(check_button_board.get_attribute('value'), 'board')
 
     check_button_tutor = self.browser.find_element_by_name('name_tutor')
     self.assertEqual(check_button_tutor.get_attribute('value'), 'Tutor')
@@ -43,9 +43,9 @@ class NewVisitorTest(unittest.TestCase):
     check_button_problem = self.browser.find_element_by_name('name_problem')
     self.assertEqual(check_button_problem.get_attribute('value'), 'Problem')
 
-    check_button_problem = self.browser.find_element_by_name('name_board_post')
-    self.assertEqual(check_button_problem.get_attribute('value'), 'Creat Post')
-    time.sleep(10)
+    #check_button_problem = self.browser.find_element_by_name('name_board_post')
+    #self.assertEqual(check_button_problem.get_attribute('value'), 'Creat Post')
+    time.sleep(5)
 
     # นัทเห็นกระทู้ทั้งหมดที่มีในบอร์ด
 
@@ -54,14 +54,14 @@ class NewVisitorTest(unittest.TestCase):
     check_button_tutor.click()
     check_url_tutor = self.browser.current_url
     self.assertRegex(check_url_tutor, '/WelearnApp/tutor')
-    time.sleep(10)
+    time.sleep(5)
 
     # นัทกดปุ่มตั้งกระทู้
-    check_button_post_tutor = self.browser.find_element_by_name('name_tutor_post')
-    self.assertEqual(check_button_post_tutor.get_attribute('value'), 'Creat Post')
-    check_button_post_tutor.click()
-    check_url_post_tutor = self.browser.current_url
-    self.assertRegex(check_url_post_tutor, '/WelearnApp/tutor/post')
+    #check_button_post_tutor = self.browser.find_element_by_name('post_tutor_item')
+    #self.assertEqual(check_button_post_tutor.get_attribute('value'), 'Creat Post')
+    #check_button_post_tutor.click()
+    #check_url_post_tutor = self.browser.current_url
+    #self.assertRegex(check_url_post_tutor, '/WelearnApp/tutor/post')
 
     # He open new url for create post.
     inputbox = self.browser.find_element_by_id('id_new_post_tutor')
@@ -70,22 +70,28 @@ class NewVisitorTest(unittest.TestCase):
     inputbox.send_keys('I want someone to be my tutor in Math')
     #check_button_tutor = self.browser.find_element_by_name('name_post')
     inputbox.send_keys(Keys.ENTER)
-    time.sleep(10)
+    time.sleep(5)
     #check_button_tutor.click()
-    self.check_for_row_in_list_table('1: I want someone to be my tutor in Math')
+    #self.check_for_row_in_list_table('1:I want someone to be my tutor in Math')
+
+    delete_button = self.browser.find_element_by_id('delete')
+    delete_button.click()
 
     # He add another item. She enters 'Hi! I am Tutor Math'
-    inputbox = self.browser.find_element_by_id('id_new_post_tutor')
+    #inputbox = self.browser.find_element_by_id('id_new_post_tutor')
+    
     # id_new_post_tutor is variable in tutorpost.html
-    self.assertEqual(inputbox.get_attribute('placeholder'),'Enter your post')
-    inputbox.send_keys('I will teach you all in Circuit, who is interested?')
+    
+    #self.assertEqual(inputbox.get_attribute('placeholder'),'Enter your post')
+    #inputbox.send_keys('I will teach you all in Circuit, who is interested?')
+    
     #check_button_tutor = self.browser.find_element_by_name('name_post')
-    inputbox.send_keys(Keys.ENTER)
-    time.sleep(10)
+    #inputbox.send_keys(Keys.ENTER)
+    #time.sleep(2)
     #check_button_tutor.click()
     # The page updates again, and now shows both items on her list
-    self.check_for_row_in_list_table('1: I want someone to be my tutor in Math')
-    self.check_for_row_in_list_table('2: I will teach you all in Circuit, who is interested?')
+    #self.check_for_row_in_list_table('1: I want someone to be my tutor in Math')
+    #self.check_for_row_in_list_table('2: I will teach you all in Circuit, who is interested?')
     
 
     self.fail('Finish the test!')

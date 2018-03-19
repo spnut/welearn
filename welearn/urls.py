@@ -19,5 +19,7 @@ from WelearnApp import views
 urlpatterns = [
     path('', views.home_page, name='home'),
     path('WelearnApp/tutor/', views.test_tutor, name='tutor'),
-    path('delete_item/<int:item_id>',views.delete_item, name='delete_item')
+    path('delete_item/<int:item_id>',views.delete_item, name='delete_item'),
+    path('WelearnApp/post/', views.test_post, name='post'),
+    path('WelearnApp/katoo/<int:item_id>', views.test_katoo, name='katoo'),
 ]

@@ -1,25 +1,47 @@
 <html>
 <title>Tutor</title>
 <body>
-    <form method="POST">
-             <center>
-             <input name="post_tutor_item" id="id_new_post_tutor" placeholder="Enter your post" />
-             <input type="submit" value="post"/>
 
-             {% csrf_token %}
-             </center>
+    
+   <!--post button part-->   
+      <center>  
+         <form method="POST" action="/WelearnApp/post/"> 
+         <button name="post_button" id="for_post" 
+                    onclick="window.location.href='/WelearnApp/post/'">Creat Post</button>
+         {% csrf_token %}
          </form>
-         <center><table id="id_post_table" border="3">
+         </br>
+         </br>
+         </br>
+   <!--table part-->
+         <table id="id_post_table" border="3">
          <td>Tutor board</td>
             {% for item in items %}
-            <tr><td>{{forloop.counter}} : {{ item.post_text }}
+            <form method="POST" action="/WelearnApp/katoo/{{ item.id }}">
+            <tr><td>{{forloop.counter}}:<a href="/WelearnApp/katoo/{{ item.id }}">{{ item.post_text }}</a>
+            {% csrf_token %}
+            </form>
+            </br>
             
+   
+   <!--comment part>
+            <td><button name="comment_button" id="comment" onclick="window.location.href='/WelearnApp/tutor/comment/'">Comment</button></td-->
+            
+   <!--delete part-->
             <form method="POST" action ="/delete_item/{{ item.id }}">
-                <button name={{item.id}} id="delete" onclick="delete_item({{item.id}})">Delete</button>
+                <td><button name={{item.id}} id="delete" 
+                       onclick="delete_item({{item.id}})">Delete</button></td>
             {% csrf_token %} 
             </from>
+
+
+                
             </tr></td>
             {% endfor %}
+
+
+   
+           
          </table></center>
          
         

@@ -1,3 +1,25 @@
+<html>
+<title>Tutor Post</title>
+<body>
+    <!--for creat katoo-->
+    <!--post part-->
+        <form method="POST" action="/WelearnApp/tutor/">
+             </br>
+             </br>
+             
+             <input name="post_tutor_head" id="id_new_head_tutor" placeholder="Enter your post" />
+
+             </br>
+             <textarea name="post_tutor_detail" id="id_new_detail_tutor" placeholder="Enter your detail" /></textarea>
+             </br>
+             </br>
+             <input type="submit" value="post"/>
+
+             {% csrf_token %}
+             
+         </form>
+</body>
+</html>
 <!--html>
 <title>Tutor Post</title>
 <body>

@@ -44,11 +44,11 @@ class HomePageTest(TestCase):
 class ItemModelTest(TestCase):
     def test_saving_and_retrieving_items(self):
         frist_item = Item()
-        frist_item.text = 'The first (ever) list item'
+        frist_item.post_text = 'The first (ever) list item'
         frist_item.save()
 
         second_item = Item()
-        second_item.text = 'Item the second'
+        second_item.post_text = 'Item the second'
         second_item.save()
 
         saved_item = Item.objects.all()
@@ -56,16 +56,16 @@ class ItemModelTest(TestCase):
 
         first_saved_item = saved_item[0]
         second_saved_item =saved_item[1]
-        self.assertEqual(first_saved_item.text, 'The first (ever) list item')
-        self.assertEqual(second_saved_item.text, 'Item the second')
+        self.assertEqual(first_saved_item.post_text, 'The first (ever) list item')
+        self.assertEqual(second_saved_item.post_text, 'Item the second')
 
     def test_can_delete_post(self):
         frist_item = Item()
-        frist_item.text = 'The first (ever) list item'
+        frist_item.post_text = 'The first (ever) list item'
         frist_item.save()
 
         second_item = Item()
-        second_item.text = 'Item the second'
+        second_item.post_text = 'Item the second'
         second_item.save()
 
         saved_item = Item.objects.all()
@@ -76,13 +76,13 @@ class ItemModelTest(TestCase):
 
     def test_can_comment(self):
         frist_item = Item()
-        frist_item.comment = 'The first (ever) list item'
+        frist_item.comment = 'The first comment'
         frist_item.save()
 
         second_item = Item()
-        second_item.comment = 'Item the second'
+        second_item.comment = 'Item the second comment'
         second_item.save()
 
         saved_item = Item.objects.all()
-        print("MY comments", saved_item)
+        print("MYYYYY comments", saved_item)
 

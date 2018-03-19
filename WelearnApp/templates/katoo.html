@@ -1,0 +1,26 @@
+<html>
+<title>Katoo Post</title>
+    <body>    
+            
+            <center><H1>{{ items.post_text }}</H1></center>
+            {% csrf_token %}
+            
+            </br>
+            <H3>Detail:</H3> {{ items.detail }}
+
+      <!--I made this template for express head, detail and comment of katoo--> 
+      <!--comment part-->
+            
+            
+            <!--form method="POST" action="/WelearnApp/tutor/comment/add">
+                <input name="name_tutor_comment_post" id="id_new_comment_tutor" placeholder="Enter your comment" />
+                <input type="submit" value="Comment" />
+            {% csrf_token %}
+            </from>
+            {{forloop.counter}} : {{ com.comment }}
+            <br/-->
+          
+           
+
+    </body>
+</html>

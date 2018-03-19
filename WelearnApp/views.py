@@ -1,20 +1,27 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from WelearnApp.models import Item
+from django.shortcuts import get_list_or_404, get_object_or_404
 
 def home_page(request):
     return render(request, 'home.html')
 
 
 def test_tutor(request):
+    
+    #items = Item.objects.all()
+    #return render(request, 'post.html', {'items': items})
     if request.method == 'POST':
-        Item.objects.create(post_text=request.POST['post_tutor_item'])
+        Item.objects.create(post_text=request.POST.get('post_tutor_head', ''), detail=request.POST.get('post_tutor_detail', ''))
         return redirect('/WelearnApp/tutor/')
     items = Item.objects.all()
     return render(request, 'tutor.html', {'items': items})
     #return render(request, 'tutor.html', {'A_new_post' : request.POST.get('post_item',''),})
     # post_item, A_new_post is variable in tutor.html
 
+def test_post(request):
+    return render(request, 'post.html')
+    
 '''def test_tutor_post(request):
     # 'post_tutor_item' is name inputbox form tutorpost.html
     if request.method == 'POST':
@@ -50,4 +57,29 @@ def test_examination(request):
 
 def test_problem(request):
     return render(request, 'problem.html')
+
+def test_katoo(request, item_id):
+    items = Item.objects.get(id=item_id)
+    return render(request, 'katoo.html', {'items': items})
+
+
+'''def test_comment_add(request, item_id):
+    items = Item.objects.get(id=item_id)
+    if request.method == 'POST':
+        Item.objects.create(comment=request.POST['post_tutor_item'])
+        return redirect('/WelearnApp/tutor/comment/add/')
+   
+    return render(request, 'comment.html', {'items': items})'''
+    #coms = get_object_or_404(Post, pk=pk)
+    #if request.method == 'POST':
+        #form = CommentForm(request.POST)
+        #if form.is_valid():
+           #com_ment = form.save(commit=False)
+           #com_ment.coms = coms
+           #com_ment.save()
+           #return redirect('/WelearnApp/tutor/',pk=coms.pk)
+    #else:
+        #form = CommentForm()
+    
+    #return render(request, 'tutor.html', {'form': form})
 
