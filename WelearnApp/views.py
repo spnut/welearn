@@ -8,19 +8,15 @@ def home_page(request):
 
 
 def test_tutor(request):
-    
-    #items = Item.objects.all()
-    #return render(request, 'post.html', {'items': items})
     if request.method == 'POST':
-        Item.objects.create(post_text=request.POST.get('post_tutor_head', ''), detail=request.POST.get('post_tutor_detail', ''))
+        Item.objects.create(post_text=request.POST.get('post_tutor_head', ''), 
+           detail=request.POST.get('post_tutor_detail', ''))
         return redirect('/WelearnApp/tutor/')
     items = Item.objects.all()
     return render(request, 'tutor.html', {'items': items})
-    #return render(request, 'tutor.html', {'A_new_post' : request.POST.get('post_item',''),})
-    # post_item, A_new_post is variable in tutor.html
 
 def test_post(request):
-    return render(request, 'post.html')
+     return render(request, 'post.html')
     
 '''def test_tutor_post(request):
     # 'post_tutor_item' is name inputbox form tutorpost.html
@@ -60,6 +56,11 @@ def test_problem(request):
 
 def test_katoo(request, item_id):
     items = Item.objects.get(id=item_id)
+    if request.method == 'POST':
+        items.comment = request.POST['post_comment']
+        items.save()
+        return redirect('/WelearnApp/katoo/' + str(items.id))
+    
     return render(request, 'katoo.html', {'items': items})
 
 

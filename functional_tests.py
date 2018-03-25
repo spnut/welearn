@@ -57,19 +57,19 @@ class NewVisitorTest(unittest.TestCase):
     time.sleep(5)
 
     # นัทกดปุ่มตั้งกระทู้
-    #check_button_post_tutor = self.browser.find_element_by_name('post_tutor_item')
-    #self.assertEqual(check_button_post_tutor.get_attribute('value'), 'Creat Post')
-    #check_button_post_tutor.click()
-    #check_url_post_tutor = self.browser.current_url
-    #self.assertRegex(check_url_post_tutor, '/WelearnApp/tutor/post')
+    button_post = self.browser.find_element_by_name('for_post')
+    self.assertEqual(button_post.get_attribute('value'), 'Creat Post')
+    button_post.click()
+    check_url_post = self.browser.current_url
+    self.assertRegex(check_url_post, 'WelearnApp/post/')
 
     # He open new url for create post.
-    inputbox = self.browser.find_element_by_id('id_new_post_tutor')
+    input_Subject = self.browser.find_element_by_id('id_new_head_tutor')
     # id_new_post_tutor is variable in tutorpost.html
-    self.assertEqual(inputbox.get_attribute('placeholder'),'Enter your post')
-    inputbox.send_keys('I want someone to be my tutor in Math')
+    self.assertEqual(input_Subject.get_attribute('placeholder'),'Enter your Subject')
+    input_Subject.send_keys('I want someone to be my tutor in Math')
     #check_button_tutor = self.browser.find_element_by_name('name_post')
-    inputbox.send_keys(Keys.ENTER)
+    input_Subject.send_keys(Keys.ENTER)
     time.sleep(5)
     #check_button_tutor.click()
     #self.check_for_row_in_list_table('1:I want someone to be my tutor in Math')

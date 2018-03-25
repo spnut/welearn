@@ -7,18 +7,21 @@
             
             </br>
             <H3>Detail:</H3> {{ items.detail }}
-
+            </br>
+            
+            <form method="POST" action="/WelearnApp/katoo/{{ items.id }}">
+            comment: <textarea  name="post_comment" id="id_new_comment" placeholder="Enter your comment" width="2000"></textarea>
+            <input type="submit" value="comment"/>
+            {% csrf_token %}
+            </form>
+ 
+            Comment :  {{ items.comment }}
+            
       <!--I made this template for express head, detail and comment of katoo--> 
       <!--comment part-->
             
             
-            <!--form method="POST" action="/WelearnApp/tutor/comment/add">
-                <input name="name_tutor_comment_post" id="id_new_comment_tutor" placeholder="Enter your comment" />
-                <input type="submit" value="Comment" />
-            {% csrf_token %}
-            </from>
-            {{forloop.counter}} : {{ com.comment }}
-            <br/-->
+            
           
            
 

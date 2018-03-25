@@ -7,10 +7,10 @@
              </br>
              </br>
              
-             <input name="post_tutor_head" id="id_new_head_tutor" placeholder="Enter your post" />
+             Subject: <input name="post_tutor_head" id="id_new_head_tutor" placeholder="Enter your Subject" />
 
              </br>
-             <textarea name="post_tutor_detail" id="id_new_detail_tutor" placeholder="Enter your detail" /></textarea>
+             Detail: <textarea style="resize:none" name="post_tutor_detail" id="id_new_detail_tutor" placeholder="Enter your detail" width="1500"></textarea>
              </br>
              </br>
              <input type="submit" value="post"/>
@@ -20,32 +20,4 @@
          </form>
 </body>
 </html>
-<!--html>
-<title>Tutor Post</title>
-<body>
-         <center><h1>Tutor board</h1></center>
-         <form method="POST">
-             <center>
-             <input name="post_tutor_item" id="id_new_post_tutor" placeholder="Enter your post" />
-             <input type="submit" value="post"/>
 
-             {% csrf_token %}
-             </center>
-         </form>
-         <center><table id="id_post_tutor_table" border="3">
-         <td>Tutor board</td>
-         {% for item in items %}
-             
-                 <tr><td>{{ item.id }}: {{ item.text }}</td></tr>
-                 <tr><td>             
-                 <input type="button" value="Delete" name="name_tutor_delete_post">
-                 
-                 <input type="submit" value="Comment" name="name_tutor_comment_post" 
-                        onclick="window.location.href='/WelearnApp/tutor/post/comment'" >
-             
-                 </td></tr>
-             
-         {% endfor %}
-         </table></center>
-</body>
-</html-->
