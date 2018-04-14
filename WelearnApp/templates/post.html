@@ -3,17 +3,18 @@
 <body>
     <!--for creat katoo-->
     <!--post part-->
-        <form method="POST" action="/WelearnApp/tutor/">
+         
              </br>
              </br>
-             
-             Subject: <input name="post_tutor_head" id="id_new_head_tutor" placeholder="Enter your Subject" />
+             <form method="POST" action="/WelearnApp/tutor/" >
+             Subject: <input name="post_tutor_head" id="id_new_head_tutor" placeholder="Enter your Subject" style="width=500px" />
 
              </br>
-             Detail: <textarea style="resize:none" name="post_tutor_detail" id="id_new_detail_tutor" placeholder="Enter your detail" width="1500"></textarea>
+             Detail: </br><textarea  name="post_tutor_detail" id="id_new_detail_tutor" placeholder="Enter your detail" style="height:250px; width=500"></textarea>
              </br>
              </br>
-             <input type="submit" value="post"/>
+        
+             <input type="submit" name="post_bt" value="post"/>
 
              {% csrf_token %}
              

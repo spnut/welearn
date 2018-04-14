@@ -18,8 +18,11 @@ from WelearnApp import views
 
 urlpatterns = [
     path('', views.home_page, name='home'),
-    path('WelearnApp/tutor/', views.test_tutor, name='tutor'),
+    path('WelearnApp/tutor/', views.tutor_page, name='tutor'),
+    path('WelearnApp/problem/', views.problem_page, name='problem'),
+    path('WelearnApp/examination/', views.examination_page, name='examination'),
     path('delete_item/<int:item_id>',views.delete_item, name='delete_item'),
-    path('WelearnApp/post/', views.test_post, name='post'),
-    path('WelearnApp/katoo/<int:item_id>', views.test_katoo, name='katoo'),
+    path('delete_comment/<int:comment_id>',views.delete_comment, name='delete_comment'),
+    path('WelearnApp/post/', views.post_page, name='post'),
+    path('WelearnApp/detail/<int:item_id>', views.detail_page, name='detail'),
 ]

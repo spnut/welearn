@@ -1,5 +1,5 @@
 <html>
-<title>Tutor</title>
+<title>Examination</title>
 <body>
 
     
@@ -11,9 +11,11 @@
          {% csrf_token %}
          </form>
          </br>
+         </br>
+         </br>
    <!--table part-->
          <table id="id_post_table" border="3">
-         <!--td>Tutor board</td-->
+         <td>Tutor board</td>
             {% for item in items %}
             <form method="POST" action="/WelearnApp/detail/{{ item.id }}">
             <tr><td>{{forloop.counter}}:<a href="/WelearnApp/detail/{{ item.id }}">{{ item.post_text }}</a>
@@ -25,12 +27,12 @@
    <!--comment part>
             <td><button name="comment_button" id="comment" onclick="window.location.href='/WelearnApp/tutor/comment/'">Comment</button></td-->
             
-   <!--delete part>
+   <!--delete part-->
             <form method="POST" action ="/delete_item/{{ item.id }}">
                 <td><button name={{item.id}} id="delete" 
                        onclick="delete_item({{item.id}})">Delete</button></td>
             {% csrf_token %} 
-            </from-->
+            </from>
 
 
                 

@@ -1,0 +1,47 @@
+<html>
+<title>Detail</title>
+    <body>    
+            
+            <center><H1>{{ items.post_text }}</H1>
+            </center>
+            </br>
+            <H3>Detail:</H3> {{ items.detail }}
+            </br>
+            </br>
+     
+            <form method="POST" action="/WelearnApp/detail/{{ items.id }}">
+            <textarea  name="post_comment" id="id_new_comment" 
+                placeholder="Enter your comment" style="width=1500px"></textarea>
+            <input type="submit" value="comment"/>
+            {% csrf_token %}
+            </form>
+
+            
+            <H3>Comment</H3>
+            {% for x in l_comment %}
+              <br>{{forloop.counter}}:{{ x.cm }}</br>
+              <form method="POST" action ="/delete_comment/{{ x.id }}">
+                <button name={{x.id}} id="delete"
+                onclick="delete_item({{x.id}})">Delete Comment</button>
+            {% csrf_token %} 
+            </from>
+            {% endfor %}
+
+            <form method="POST" action ="/delete_item/{{ items.id }}">
+                <button name={{items.id}} id="delete"
+                onclick="delete_item({{items.id}})">Delete POST</button>
+            {% csrf_token %} 
+            </from>
+            </br> 
+            </br>
+      <!--I made this template for express head, detail and comment of katoo--> 
+      <!--comment part
+          Comment :  {{ items.comment }}-->
+            
+            
+            
+          
+           
+
+    </body>
+</html>

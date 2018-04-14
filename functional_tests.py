@@ -18,7 +18,7 @@ class NewVisitorTest(unittest.TestCase):
     self.browser.quit()
 
   def check_for_row_in_list_table(self, row_text):
-    table = self.browser.find_element_by_id('id_post_tutor_table') # id_post_tutor_table is id table in tutorpost.html
+    table = self.browser.find_element_by_id('id_post_table') # id_post_tutor_table is id table in tutorpost.html
     rows = table.find_elements_by_tag_name('tr')
     self.assertIn(row_text, [row.text for row in rows])
 
@@ -45,7 +45,7 @@ class NewVisitorTest(unittest.TestCase):
 
     #check_button_problem = self.browser.find_element_by_name('name_board_post')
     #self.assertEqual(check_button_problem.get_attribute('value'), 'Creat Post')
-    time.sleep(5)
+    
 
     # นัทเห็นกระทู้ทั้งหมดที่มีในบอร์ด
 
@@ -54,26 +54,41 @@ class NewVisitorTest(unittest.TestCase):
     check_button_tutor.click()
     check_url_tutor = self.browser.current_url
     self.assertRegex(check_url_tutor, '/WelearnApp/tutor')
-    time.sleep(5)
+    time.sleep(2)
+   
 
     # นัทกดปุ่มตั้งกระทู้
-    button_post = self.browser.find_element_by_name('for_post')
-    self.assertEqual(button_post.get_attribute('value'), 'Creat Post')
+    button_post = self.browser.find_element_by_id('for_post')
+    self.assertEqual(button_post.get_attribute('name'), 'post_button')
     button_post.click()
     check_url_post = self.browser.current_url
     self.assertRegex(check_url_post, 'WelearnApp/post/')
 
     # He open new url for create post.
     input_Subject = self.browser.find_element_by_id('id_new_head_tutor')
+    input_detail = self.browser.find_element_by_id('id_new_detail_tutor')
+
     # id_new_post_tutor is variable in tutorpost.html
     self.assertEqual(input_Subject.get_attribute('placeholder'),'Enter your Subject')
     input_Subject.send_keys('I want someone to be my tutor in Math')
-    #check_button_tutor = self.browser.find_element_by_name('name_post')
-    input_Subject.send_keys(Keys.ENTER)
+   
+    self.assertEqual(input_detail.get_attribute('placeholder'),'Enter your detail')
+    input_detail.send_keys('I want someone to be my tutor in Math...................')
     time.sleep(5)
+    #check_button_tutor = self.browser.find_element_by_name('name_post')
+    submit_button = self.browser.find_element_by_name('post_bt')
+    submit_button.click()
+    time.sleep(5)
+
+    #check_url_after_post = self.browser.current_url
+    #self.assertRegex(check_url_after_post, 'WelearnApp/tutor/')
+    
+    self.check_for_row_in_list_table('1:I want someone to be my tutor in Math\nDelete')
+    time.sleep(5)
+
     #check_button_tutor.click()
     #self.check_for_row_in_list_table('1:I want someone to be my tutor in Math')
-
+    #นัทกดลบกระทู้
     delete_button = self.browser.find_element_by_id('delete')
     delete_button.click()
 
