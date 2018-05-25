@@ -1,0 +1,39 @@
+<html>
+    <title>AboutPage</title>
+    <head>
+       {% load staticfiles %} <!-- Prepare django to load static files -->
+    </head>
+<style>
+body {background-color: #F5FFFA;}
+
+{
+    background-color: lightblue;
+    color: black;
+    padding: 40px;
+    text-align: center;
+} 
+
+table, th, td {
+    border: 50px solid #b2ebf2 ;
+}
+
+</style>
+<body>
+    <center><h1 id="myHeader">About Page</h1></center>
+    <center><table>
+        <tr>       
+
+            <th><img src={% static "fern.jpg" %} style="width:250px;height:250px;" margin="left"></th>
+        
+            <th><img src={% static "nut.jpg" %} style="width:250px;height:250px;" margin="center"></th>
+        
+            <th><img src={% static "toy.jpg" %} style="width:250px;height:250px;" margin="right"></th>
+        </tr>
+        <tr>
+            <th>น.ส.กฤตยนันทน์  เริงเขตรกรณ์ </th>
+            <th>นาย ศุภณัฐ   โกศัลวิตร</th>
+            <th>น.ส.เบญญาภา  พูลทองคำ</th>
+        </tr>
+    </table></center>  
+</body>
+</html>

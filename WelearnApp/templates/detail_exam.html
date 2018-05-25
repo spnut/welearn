@@ -1,0 +1,42 @@
+<html>
+<title>Detail Examination</title>
+    <body>    
+            
+            <center><H1>{{ itemsExam.topic_exam }}</H1>
+            </center>
+            </br>
+            <H3>Detail:</H3> {{ itemsExam.detail_exam }}
+            </br>
+            </br>
+
+
+     
+            <form method="POST" action="/WelearnApp/examination/detail/{{ itemsExam.id }}">
+            <textarea  name="post_comment" id="id_new_comment" 
+                placeholder="Enter your comment" style="width=1500px"></textarea>
+            <input type="submit" value="comment"/>
+            {% csrf_token %}
+            </form>
+
+             
+
+
+            <H3>Comment</H3>
+            {% for comment_exam in commentsExam %}
+              <br>{{forloop.counter}}:{{ comment_exam.cm_exam }}</br>
+              <form method="POST" action ="/examination/delete_comment/{{ comment_exam.id }}">
+                <button name={{comment_exam.id}} id="delete"
+                onclick="delete_item({{comment_exam.id}})">Delete Comment</button>
+            {% csrf_token %} 
+            </from>
+            {% endfor %}
+
+            </br>
+            </br>
+            <form method="POST" action ="/examination/delete_item/{{ itemsExam.id }}">
+                <button name={{itemsExam.id}} id="delete"
+                onclick="delete_item({{itemsExam.id}})">Delete POST</button>
+            {% csrf_token %} 
+            </from>
+    </body>
+</html>

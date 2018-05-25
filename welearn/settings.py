@@ -114,8 +114,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+MEDIA_ROOT = 'home/Django/welearn/WelearnApp/static/uplode'
+MEDIA_URL = '/uplode/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+#STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+STATICFILE_DIRS = [ os.path.join(BASE_DIR,'static')]

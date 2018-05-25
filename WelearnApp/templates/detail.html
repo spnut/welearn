@@ -8,32 +8,36 @@
             <H3>Detail:</H3> {{ items.detail }}
             </br>
             </br>
+
+
      
-            <form method="POST" action="/WelearnApp/detail/{{ items.id }}">
+            <form method="POST" action="/WelearnApp/tutor/detail/{{ items.id }}">
             <textarea  name="post_comment" id="id_new_comment" 
                 placeholder="Enter your comment" style="width=1500px"></textarea>
             <input type="submit" value="comment"/>
             {% csrf_token %}
             </form>
 
-            
+             
+
+
             <H3>Comment</H3>
-            {% for x in l_comment %}
-              <br>{{forloop.counter}}:{{ x.cm }}</br>
-              <form method="POST" action ="/delete_comment/{{ x.id }}">
-                <button name={{x.id}} id="delete"
-                onclick="delete_item({{x.id}})">Delete Comment</button>
+            {% for comment in l_comments %}
+              <br>{{forloop.counter}}:{{ comment.cm }}</br>
+              <form method="POST" action ="/delete_comment/{{ comment.id }}">
+                <button name={{comment.id}} id="delete_comment"
+                onclick="delete_comment({{comment.id}})">Delete Comment</button>
             {% csrf_token %} 
             </from>
             {% endfor %}
 
+            </br>
+            </br>
             <form method="POST" action ="/delete_item/{{ items.id }}">
                 <button name={{items.id}} id="delete"
                 onclick="delete_item({{items.id}})">Delete POST</button>
             {% csrf_token %} 
             </from>
-            </br> 
-            </br>
       <!--I made this template for express head, detail and comment of katoo--> 
       <!--comment part
           Comment :  {{ items.comment }}-->

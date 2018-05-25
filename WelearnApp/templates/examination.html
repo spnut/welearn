@@ -1,62 +1,26 @@
 <html>
 <title>Examination</title>
-<body>
-
-    
+<body>   
    <!--post button part-->   
       <center>  
-         <form method="POST" action="/WelearnApp/post/"> 
-         <button name="post_button" id="for_post" 
-                    onclick="window.location.href='/WelearnApp/post/'">Creat Post</button>
+         <form method="POST" action="/WelearnApp/examination/post/"> 
+         <button name="post_button" id="for_post_exam" 
+                    onclick="window.location.href='/WelearnApp/examination/post/'">Creat Post</button>
          {% csrf_token %}
          </form>
          </br>
-         </br>
-         </br>
    <!--table part-->
-         <table id="id_post_table" border="3">
-         <td>Tutor board</td>
-            {% for item in items %}
-            <form method="POST" action="/WelearnApp/detail/{{ item.id }}">
-            <tr><td>{{forloop.counter}}:<a href="/WelearnApp/detail/{{ item.id }}">{{ item.post_text }}</a>
+         <table id="id_post_exam_table" border="3">
+         <!--td>Tutor board</td-->
+            {% for itemExam in itemsExam %}
+            <form method="POST" action="/WelearnApp/examination/detail/{{ itemExam.id }}">
+            <tr><td>{{forloop.counter}}:<a href="/WelearnApp/examination/detail/{{ itemExam.id }}">{{ itemExam.topic_exam }}</a>
             {% csrf_token %}
             </form>
             </br>
-            
-   
-   <!--comment part>
-            <td><button name="comment_button" id="comment" onclick="window.location.href='/WelearnApp/tutor/comment/'">Comment</button></td-->
-            
-   <!--delete part-->
-            <form method="POST" action ="/delete_item/{{ item.id }}">
-                <td><button name={{item.id}} id="delete" 
-                       onclick="delete_item({{item.id}})">Delete</button></td>
-            {% csrf_token %} 
-            </from>
-
-
-                
             </tr></td>
             {% endfor %}
 
-
-   
-           
          </table></center>
-         
-        
-     
-    <!--center>
-        <input type="button" onclick="window.location.href='/WelearnApp/tutor/post'" value="Creat Post" name="name_tutor_post">
-    </center>
-     <form method="POST">
-            <input name="post_item" id="id_new_post" placeholder="Enter your post" />
-            {% csrf_token %}
-     </form>
-    <table id="id_post_table">
-        <tr><td>1: {{ A_new_post }}</td></tr>
-        
-    </table-->
 </body>
 </html>
-
