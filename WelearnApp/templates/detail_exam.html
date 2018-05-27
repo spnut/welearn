@@ -23,20 +23,21 @@
 
             <H3>Comment</H3>
             {% for comment_exam in commentsExam %}
-              <br>{{forloop.counter}}:{{ comment_exam.cm_exam }}</br>
-              <form method="POST" action ="/examination/delete_comment/{{ comment_exam.id }}">
-                <button name={{comment_exam.id}} id="delete"
-                onclick="delete_item({{comment_exam.id}})">Delete Comment</button>
+            <form method="GET" action ="/examination/delete_comment/{{ comment_exam.id }}">
+                <br>{{forloop.counter}}:{{ comment_exam.cm_exam }}</br>
+                <a href="/examination/delete_comment/{{ comment_exam.id }}">Delete Comment</a>
+                <!--button name={{comment_exam.id}} id="delete"
+                onclick="delete_item({{comment_exam.id}})">Delete Comment</button-->
             {% csrf_token %} 
             </from>
             {% endfor %}
 
             </br>
             </br>
-            <form method="POST" action ="/examination/delete_item/{{ itemsExam.id }}">
-                <button name={{itemsExam.id}} id="delete"
-                onclick="delete_item({{itemsExam.id}})">Delete POST</button>
-            {% csrf_token %} 
+            <form method="GET" action ="/examination/delete_item/{{ itemsExam.id }}">
+                <a href="/examination/delete_item/{{ itemsExam.id }}">Delete Post</a>
+                <!--button name={{itemsExam.id}} id="delete"
+                onclick="delete_item({{itemsExam.id}})">Delete POST</button-->
             </from>
     </body>
 </html>

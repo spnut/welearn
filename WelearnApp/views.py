@@ -2,8 +2,9 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from WelearnApp.models import Topic,Comment,TopicExam,Comment_Exam,Profile
 from django.shortcuts import get_list_or_404, get_object_or_404
+from django.contrib import messages
 
-from WelearnApp.forms import ProfileForm
+from WelearnApp.forms import ProfileForm, TopicForm, CommentForm
 #welcome to welearn and show 2 button(Tutor, Examination)
 def home_page(request):
     return render(request, 'home.html')
@@ -42,14 +43,19 @@ def detail_page(request, item_id):
     
 #delate topic
 def delete_item(request, items_id):
-    if request.method == 'POST':
-        Topic.objects.filter(id=items_id).delete()
+   # if request.method == 'POST':
+    #    Topic.objects.filter(id=items_id).delete()
     '''del_post = Topic.objects.get(id=items_id)
     del_post.delete()'''
+    #return redirect('/WelearnApp/tutor/')
+    if request.method == 'GET':
+        Topic.objects.filter(id=items_id).delete()
+        #Comment.objects.filter(id=comment_id).delete()
     return redirect('/WelearnApp/tutor/')
 #delate comment
+
 def delete_comment(request, comment_id):
-    if request.method == 'POST':
+    if request.method == 'GET':
         Comment.objects.filter(id=comment_id).delete()
     '''del_comment = Comment.objects.get(id=comment_id)
     del_comment.delete()'''
@@ -85,13 +91,15 @@ def detail_exam_page(request, itemExam_id):
 
 #delate topic
 def delete_exam_item(request, itemsExam_id):
-    TopicExam.objects.filter(id=itemsExam_id).delete()
+    if request.method == 'GET':
+        TopicExam.objects.filter(id=itemsExam_id).delete()
     '''del_post = Topic.objects.get(id=items_id)
     del_post.delete()'''
     return redirect('/WelearnApp/examination/')
 #delate comment
 def delete_exam_comment(request, comment_exam_id):
-    Comment_Exam.objects.filter(id=comment_exam_id).delete()
+    if request.method == 'GET':
+        Comment_Exam.objects.filter(id=comment_exam_id).delete()
     '''del_comment = Comment.objects.get(id=comment_id)
     del_comment.delete()'''
     return redirect('/WelearnApp/examination/')

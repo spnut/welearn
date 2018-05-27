@@ -23,20 +23,22 @@
 
             <H3>Comment</H3>
             {% for comment in l_comments %}
-              <br>{{forloop.counter}}:{{ comment.cm }}</br>
-              <form method="POST" action ="/delete_comment/{{ comment.id }}">
-                <button name={{comment.id}} id="delete_comment"
-                onclick="delete_comment({{comment.id}})">Delete Comment</button>
-            {% csrf_token %} 
+            <form method="GET" action ="/delete_comment/{{ comment.id }}">
+                <br>{{forloop.counter}}:{{ comment.cm }}</br>
+                <a href="/delete_comment/{{ comment.id }}">Delete comment</a>
+                <!--button name={{comment.id}} id="delete_comment"
+                onclick="delete_comment({{comment.id}})">Delete Comment</button-->
+            
             </from>
             {% endfor %}
 
             </br>
             </br>
-            <form method="POST" action ="/delete_item/{{ items.id }}">
-                <button name={{items.id}} id="delete"
-                onclick="delete_item({{items.id}})">Delete POST</button>
-            {% csrf_token %} 
+            <form method="GET" action ="/delete_item/{{ items.id }}">
+                <a href="/delete_item/{{ items.id }}">Delete Post</a>
+                <!--button name={{items.id}} id="delete"
+                onclick="delete_item({{items.id}})">Delete POST</button-->
+             
             </from>
       <!--I made this template for express head, detail and comment of katoo--> 
       <!--comment part
